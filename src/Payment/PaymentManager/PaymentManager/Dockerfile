@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["PaymentManager.csproj","./"]
-RUN dotnet restore "./PaymentManager.csproj"
+RUN dotnet restore ./PaymentManager.csproj
 COPY . ./
 WORKDIR /src/.
 RUN dotnet build "PaymentManager.csproj" -c Release -o /app/build
