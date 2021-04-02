@@ -1,10 +1,19 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+WORKDIR /app
+EXPOSE 80
+
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-WORKDIR /app
-COPY *.csproj ./
-RUN dotnet restore
+WORKDIR /src
+COPY ["PaymentManager.csproj","./"]
+RUN dotnet restore "./PaymentManager.csproj"
 COPY . ./
-RUN dotnet publish -c Release -o out
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+WORKDIR /src/.
+RUN dotnet build "PaymentManager.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "PaymentManager.csproj" -c Release -o /app/publish
+
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PaymentManager.dll"]
