@@ -31,9 +31,9 @@ phases:
       # - command
   pre_build:
     commands:
-       - ls
+       - cp "DockerFiles/PaymentManagerService" src/Payment/PaymentManager/PaymentManager/Dockerfile
        - cd src/Payment/PaymentManager/PaymentManager
-       - cp DockerFiles/PaymentManagerService src/Payment/PaymentManager/PaymentManager/
+       - ls
        - echo Logging in to Amazon ECR...
        - aws --version
        - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
