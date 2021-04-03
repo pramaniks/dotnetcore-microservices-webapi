@@ -54,6 +54,9 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:$CODEBUILD_BUILD_NUMBER
+      - echo Writing image definitions file...
+      - printf '[{"name":"PaymentServiceContainer","imageUri":"%s"}]' $REPOSITORY_URI:$CODEBUILD_BUILD_NUMBER > imagedefinitions.json
+      - ls
 #reports:
   #report-name-or-arn:
     #files:
@@ -62,12 +65,12 @@ phases:
     #base-directory: location
     #discard-paths: yes
     #file-format: JunitXml | CucumberJson
-#artifacts:
-  #files:
-    # - location
+artifacts:
+  files:
+     - src/Payment/PaymentManager/PaymentManager/imagedefinitions.json
     # - location
   #name: $(date +%Y-%m-%d)
-  #discard-paths: yes
+  discard-paths: yes
   #base-directory: location
 #cache:
   #paths:
