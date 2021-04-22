@@ -22,7 +22,7 @@ namespace PaymentManager.Controllers
         [Route("getPayment")]
         public string GetPayment()
         {
-            return $"Payment reference number is 232321m3kenk2je30245";
+            return $"Payment reference number is 12345";
         }
     }
 }
