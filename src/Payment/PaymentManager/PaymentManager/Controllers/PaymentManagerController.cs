@@ -15,7 +15,7 @@ namespace PaymentManager.Controllers
         [Route("ping")]
         public string Ping()
         {
-            return "Payment Manager service is running OK!!";
+            return "Payment Manager service is up & running !!";
         }
     }
 }
