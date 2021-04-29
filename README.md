@@ -13,3 +13,6 @@ In the words of Brian Foote and Joseph Yoder
   * Engine — Executes business logic — how to implement an activity
   * Resource Access — encapsulates accessing resources (e.g. DB, REST endpoint) — where do I get data from
   * Utility — Cross-cutting concern that is not specific to our business logic (could be used in a coffee machine)
+
+# Conceptual design:
+![static-diagram2](https://user-images.githubusercontent.com/20775313/116518672-2f0d0f80-a8ee-11eb-8265-26a97bac848e.jpg)
