@@ -2,6 +2,9 @@
 
 **Many of you heard of DDD (Domain Driven Design) but like most other material on architecture, they offer insight and paradigms but are but not a straightforward methodology to create architecture that is easy to teach and follow over time.**
 
+>If you think good architecture is expensive, try bad architecture”
+Brian Foote and Joseph Yoder
+
 # Define the services:
 * **There are exactly 5 types of services:**
   * Client — Handles communication with client, no business logic (e.g. REST controller) — who is making the request
