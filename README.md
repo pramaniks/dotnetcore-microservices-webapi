@@ -15,3 +15,14 @@
 
 # Conceptual design:
 ![static-diagram2](https://user-images.githubusercontent.com/20775313/116518672-2f0d0f80-a8ee-11eb-8265-26a97bac848e.jpg)
+
+# Few rules:
+There are a couple of different rule sets on how to communicate between these services:
+* Flow control only goes from top to bottom
+(client → Manager → Engine (optional)→Resource Access)
+* Each Service can access any service, as long as it’s top to bottom
+* Manager can call other managers but only by triggering an action (asynchronous)
+* Every service can access any utility service
+* Each service should be independent (potentially a microservice), this means that for instance, it has to have it’s own business objects
+* Having only 5 types of services with a clear scope for each is very powerful. It creates a common language when talking about components and makes it very clear to understand responsibilities and boundaries.
+* The constraints on who can call whom and how helps with removing coupling and reducing complexity.
